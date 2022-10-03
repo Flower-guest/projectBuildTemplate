@@ -1,14 +1,5 @@
 <script setup lang="ts">
-import useGlobalProperties from '@/hooks/globalVar'
-const globalProperties = useGlobalProperties()
-let count = $ref(0);
-const success = () => {
-  globalProperties.$messages.success('This is a success message')
-}
 
-const countAdd = () => {
-  count++;
-}
 
 </script>
 
@@ -22,9 +13,7 @@ const countAdd = () => {
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <a-button type="primary" @click="success">Primary</a-button>
-  <a-button type="primary" @click="countAdd">Prim {{ count }}ary</a-button>
-  <HelloWorld msg="Vite + Vue" />
+
 </template>
 
 <style scoped>
