@@ -15,6 +15,7 @@
     "baseUrl": "./",
     "types": [
       "vite/client",
+      "vite-plugin-pages/client"
     ],
     "paths": {
       "@/*": ["src/*"]
@@ -25,8 +26,10 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "./components.d.ts",
-    "./auto-imports.d.ts"
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "mock/**/*.ts",
+    "vite.config.ts"
   ],
   "references": [{
     "path": "./tsconfig.node.json"
