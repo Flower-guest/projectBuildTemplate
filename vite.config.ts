@@ -27,6 +27,8 @@ export default defineConfig({
     eslintPlugin({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
     }),
+    // 自动配置路由
+    Pages(),
     // 自动引入api
     AutoImport({
       imports: ['vue', "vue/macros", 'vue-router', "pinia"],
@@ -41,11 +43,5 @@ export default defineConfig({
       extensions: ['vue'],
       resolvers: [AntDesignVueResolver()],
     }),
-    Pages({
-      // 自动读取src/views下的vue文件，生成路由信息，默认路由路径'/‘
-      dirs: [{ dir: "src/views", baseRoute: "/" }],
-      // 异步方式加载路由组件
-      importMode: "async",
-    })
   ],
 });
