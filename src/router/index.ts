@@ -1,7 +1,7 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
-import routes from "virtual:generated-pages"
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-console.log(routes);
+const routes: RouteRecordRaw[] = [];
+
 const router = createRouter({
   routes,
   history: createWebHashHistory(),

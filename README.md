@@ -20,9 +20,6 @@
 - 配合 commitizen，使代码提交更加规范。
 - ESLint 配置（`.eslintrc.js` ）详细请看对应的配置文件。
 
-🔌 关闭代码规范
-将  `src/`  目录加入  `.eslintignore`  进行忽略即可。
-
 ## 目录结构
 
 以下是系统的目录结构

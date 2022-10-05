@@ -3,7 +3,7 @@ import path from "path";
 import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";  //自动导入组件
 import AutoImport from 'unplugin-auto-import/vite' //自动导入api
-import Pages from "vite-plugin-pages" //自动创建路由
+// import Pages from "vite-plugin-pages" //自动创建路由
 import eslintPlugin from 'vite-plugin-eslint' //导入包
 import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
@@ -28,7 +28,9 @@ export default defineConfig({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
     }),
     // 自动配置路由
-    Pages(),
+    // Pages({
+    //   exclude: ['**/components/*.vue']
+    // }),
     // 自动引入api
     AutoImport({
       imports: ['vue', "vue/macros", 'vue-router', "pinia"],
