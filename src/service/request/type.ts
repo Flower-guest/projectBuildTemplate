@@ -1,9 +1,9 @@
-import type { AxiosRequestConfig, AxiosResponse } from "axios";
+import type { AxiosRequestConfig } from "axios";
 
 export interface XJRequestInterceptors {
   requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig;
   requestInterceptorCatch?: (error: any) => any;
-  responseInterceptor?: (res: AxiosResponse) => AxiosResponse;
+  responseInterceptor?: (res: any) => any;
   responseInterceptorCatch?: (error: any) => any;
 }
 

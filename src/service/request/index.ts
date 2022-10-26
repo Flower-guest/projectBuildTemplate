@@ -57,28 +57,35 @@ class Request {
     );
   }
 
-  request(config: RequestConfig): void {
-    // 请求独有的请求拦截
-    if (config.interceptors?.requestInterceptor) {
-      config = config.interceptors.requestInterceptor(config);
-    }
-    // 独有的请求加载
-    this.showLoading = config.showLoading ?? DEFAULT_LOADING;
-
-    this.instance.request(config).then((res) => {
-      // 独有的响应拦截
-      if (config.interceptors?.responseInterceptor) {
-        res = config.interceptors.responseInterceptor(res);
+  request<T>(config: RequestConfig): Promise<T> {
+    return new Promise((resolve, reject) => {
+      // 请求独有的请求拦截
+      if (config.interceptors?.requestInterceptor) {
+        config = config.interceptors.requestInterceptor(config);
       }
-      return res;
+      // 独有的请求加载
+      this.showLoading = config.showLoading ?? DEFAULT_LOADING;
+
+      this.instance
+        .request<any, T>(config)
+        .then((res) => {
+          // 独有的响应拦截
+          if (config.interceptors?.responseInterceptor) {
+            res = config.interceptors.responseInterceptor(res);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
     });
   }
 
-  get(config: RequestConfig): void {
+  get<T>(config: RequestConfig): Promise<T> {
     return this.request({ ...config, method: "GET" });
   }
 
-  post(config: RequestConfig): void {
+  post<T>(config: RequestConfig): Promise<T> {
     return this.request({ ...config, method: "POST" });
   }
 }
