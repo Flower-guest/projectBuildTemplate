@@ -1,14 +1,11 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import route from "./router"
-import piniaStore from './store';
+import route from "./router";
+import pinia from "./store";
 
-import { message } from "ant-design-vue";
 import "./style.css";
-import 'ant-design-vue/es/message/style/css';
+import "ant-design-vue/es/message/style/css";
 
 const app = createApp(App);
 
-app.config.globalProperties.$messages = message;
-
-app.use(route).use(piniaStore).mount("#app");
+app.use(route).use(pinia).mount("#app");
