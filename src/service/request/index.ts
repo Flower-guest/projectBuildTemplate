@@ -57,7 +57,7 @@ class Request {
     );
   }
 
-  request<T>(config: RequestConfig): Promise<T> {
+  request<T>(config: RequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // 请求独有的请求拦截
       if (config.interceptors?.requestInterceptor) {
@@ -81,11 +81,11 @@ class Request {
     });
   }
 
-  get<T>(config: RequestConfig): Promise<T> {
+  get<T>(config: RequestConfig<T>): Promise<T> {
     return this.request({ ...config, method: "GET" });
   }
 
-  post<T>(config: RequestConfig): Promise<T> {
+  post<T>(config: RequestConfig<T>): Promise<T> {
     return this.request({ ...config, method: "POST" });
   }
 }
