@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
-import { UserState } from './types';
+import { UserState } from "./types";
 
-export const useUserStore = defineStore('user', {
+export const useUserStore = defineStore("user", {
   state: (): UserState => ({
-    user_name: undefined,
-    email: undefined,
-  })
-})
+    user_name: "1",
+    email: "2",
+  }),
+});

@@ -1,19 +1,23 @@
 import { defineConfig, loadEnv } from "vite";
 import path from "path";
-import vue from "@vitejs/plugin-vue";
-import Components from "unplugin-vue-components/vite"; //自动导入组件
-import AutoImport from "unplugin-auto-import/vite"; //自动导入api
-// import Pages from "vite-plugin-pages" //自动创建路由
-import eslintPlugin from "vite-plugin-eslint"; //导入包
-import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
+import { VITE_PORT } from "./viteConfig/constant";
+import proxy from "./viteConfig/vite/proxy";
+import { createVitePlugins } from "./viteConfig/vite/plugins";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ command, mode }) => {
   const { VITE_BASE_NAME } = loadEnv(mode, process.cwd(), "");
+  const isBuild = command === "build";
   return {
     base: VITE_BASE_NAME == "prod" ? "./" : "/",
     server: {
-      host: true,
+      hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
+      // 服务配置
+      port: VITE_PORT, // 类型： number 指定服务器端口;
+      open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
+      cors: false, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
+      host: "0.0.0.0", // IP配置，支持从IP启动
+      proxy,
     },
     resolve: {
       // 配置别名
@@ -21,33 +25,6 @@ export default defineConfig(({ mode }) => {
         "@": path.resolve(__dirname, "src"),
       },
     },
-    plugins: [
-      // 不用写`ref`语法糖`.value`的方法
-      vue({
-        reactivityTransform: true,
-      }),
-      // 增加下面的配置项,这样在运行时就能检查eslint规范
-      eslintPlugin({
-        include: ["src/**/*.js", "src/**/*.vue", "src/*.js", "src/*.vue"],
-      }),
-      // 自动配置路由
-      // Pages({
-      //   exclude: ['**/components/*.vue']
-      // }),
-      // 自动引入api
-      AutoImport({
-        imports: ["vue", "vue/macros", "vue-router", "pinia"],
-        // 在 Vue 模板中自动导入
-        vueTemplate: true,
-        dts: "types/auto-imports.d.ts",
-      }),
-      // 自动引入ui组件和自己分装的组件
-      Components({
-        dirs: ["src/components"],
-        dts: "types/components.d.ts",
-        extensions: ["vue"],
-        resolvers: [AntDesignVueResolver()],
-      }),
-    ],
+    plugins: createVitePlugins(isBuild),
   };
 });

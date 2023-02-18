@@ -9,7 +9,6 @@ module.exports = {
     "plugin:vue/vue3-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  overrides: [],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",

@@ -3,7 +3,7 @@ import App from "./App.vue";
 import route from "./router";
 import pinia from "./store";
 
-import "./style.css";
+import "uno.css";
 import "ant-design-vue/es/message/style/css";
 
 const app = createApp(App);

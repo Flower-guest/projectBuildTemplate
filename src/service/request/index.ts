@@ -1,11 +1,8 @@
 import axios from "axios";
 import type { AxiosInstance } from "axios";
 import { XJRequestInterceptors, RequestConfig } from "./type";
-import showMessage from "./status";
-import pinia from "@/store";
-import { useAxiosSpinStore } from "@/store";
+import { message } from "ant-design-vue";
 
-const store = useAxiosSpinStore(pinia);
 const DEFAULT_LOADING = true; //loading默认状态
 
 class Request {
@@ -31,7 +28,7 @@ class Request {
     // 全局请求响应拦截
     this.instance.interceptors.request.use(
       (config) => {
-        store.showLoading = this.showLoading;
+        if (this.showLoading) message.loading("加载中..", 0);
         return config;
       },
       (err) => {
@@ -40,18 +37,13 @@ class Request {
     );
     this.instance.interceptors.response.use(
       (res) => {
-        if (this.showLoading) {
-          store.showLoading = false;
-        }
+        message.destroy();
         const data = res.data;
-        if (data.returnCode === 200) {
-          return data;
-        } else {
-          console.log(showMessage(data.returnCode));
-        }
-        return data;
+        return data.data;
       },
       (err) => {
+        message.destroy();
+        message.error(err.response.data);
         return err;
       }
     );
