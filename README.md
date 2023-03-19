@@ -69,11 +69,25 @@ import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
     }),
 ```
 
-# 使用
+# 使用脚手架[文档](https://www.npmjs.com/package/cxj-cli)
+
+```shell
+# 安装脚手架
+npm install cxj-cli -g
+
+# 创建项目
+xj create <packgeName>
+```
+
+# ⚠️ 注意使用脚手架安装项目
+
+* 该模板仓库使用的包管理为pnpm，创建项目前请先安装pnpm，否则会出现依赖安装报错。
+
+# 代码拉去使用
 
 ```shell
 # 拉取仓库代码
-git clone  https://github.com/Flower-guest/ProjectBuildTemplate.git
+git clone  https://github.com/Flower-guest/projectBuildTemplate.git
 
 # 进入项目文件夹
 cd ProjectBuildTemplate
