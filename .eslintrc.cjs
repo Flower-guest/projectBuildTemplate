@@ -67,5 +67,59 @@ module.exports = {
       },
     ],
     'vue/multi-word-component-names': 'off',
+    "padding-line-between-statements": [
+      "error",
+      {
+        blankLine: "always",
+        prev: "",
+        next: "function",
+      }, // 函数前填充空行
+      {
+        blankLine: "always",
+        prev: "",
+        next: "export",
+      }, // export前填充空行
+      {
+        blankLine: "always",
+        prev: "",
+        next: "block",
+      }, // {} 前换行
+      {
+        blankLine: "always",
+        prev: "",
+        next: "block-like",
+      }, // {} 前换行
+      {
+        blankLine: "always",
+        prev: "",
+        next: "expression",
+      },
+      {
+        blankLine: "always",
+        prev: "",
+        next: "multiline-block-like",
+      }, // 多类{}前填充空行
+      {
+        blankLine: "always",
+        prev: "multiline-let",
+        next: "",
+      }, // 多个let后空行
+      {
+        blankLine: "always",
+        prev: "multiline-const",
+        next: "",
+      }, // 多个cont后空行
+      {
+        blankLine: "always",
+        prev: "const",
+        next: "",
+      }, // 多个cont后空行
+      {
+        blankLine: "always",
+        prev: "import",
+        next: "",
+      }, // 每个import后空行
+    ],
+    "no-multiple-empty-lines": [1, { max: 1 }]
   },
 };
