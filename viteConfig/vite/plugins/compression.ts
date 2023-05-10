@@ -3,10 +3,8 @@
  * @description 开启.gz压缩
  */
 import viteCompression from "vite-plugin-compression";
-import { COMPRESSION } from "../../constant";
 
 const ConfigCompressPlugin = () => {
-  if (COMPRESSION) {
     return viteCompression({
       verbose: true, // 默认即可
       disable: false, //开启压缩(不禁用)，默认即可
@@ -15,8 +13,6 @@ const ConfigCompressPlugin = () => {
       algorithm: "gzip", //压缩算法
       ext: ".gz", //文件类型
     });
-  }
-  return [];
 };
 
 export default ConfigCompressPlugin;

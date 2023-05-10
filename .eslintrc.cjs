@@ -5,16 +5,15 @@ module.exports = {
     node: true,
   },
   parser: "vue-eslint-parser",
-  extends: [
-    "plugin:vue/vue3-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 2020,
     sourceType: "module",
     parser: "@typescript-eslint/parser",
   },
-  plugins: ["vue", "@typescript-eslint"],
+  extends: [
+    'plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended'
+    // , 'plugin:prettier/recommended'
+  ],
   rules: {
     'vue/script-setup-uses-vars': 'error',
     '@typescript-eslint/ban-ts-ignore': 'off',

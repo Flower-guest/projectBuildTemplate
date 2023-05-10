@@ -13,6 +13,9 @@ import AutoImportDeps from "./autoImport";
 import ConfigEslintPlugin from "./eslintPlugin";
 import ConfigCompressPlugin from "./compression";
 import ConfigImageminPlugin from "./imagemin";
+import ConfigRestartPlugin from './restart';
+import ConfigProgressPlugin from './progress';
+import ConfigVisualizerConfig from './visualizer';
 
 export function createVitePlugins(isBuild: boolean) {
   const vitePlugins: PluginOption[] = [
@@ -28,18 +31,30 @@ export function createVitePlugins(isBuild: boolean) {
     unocss(defineConfig),
   ];
 
-  console.log(isBuild);
-
   // 自动按需引入组件
   vitePlugins.push(AutoRegistryComponents());
+
   // 自动按需引入依赖
   vitePlugins.push(AutoImportDeps());
+
   // eslint配置
   vitePlugins.push(ConfigEslintPlugin());
-  // 开启.gz压缩
-  vitePlugins.push(ConfigCompressPlugin());
-  // 图片压缩
-  vitePlugins.push(ConfigImageminPlugin());
+
+  // 监听配置文件改动重启
+  vitePlugins.push(ConfigRestartPlugin());
+
+  // 构建时显示进度条
+  vitePlugins.push(ConfigProgressPlugin());
+
+  // rollup-plugin-visualizer
+  vitePlugins.push(ConfigVisualizerConfig());
+
+  if (isBuild) {
+    // 开启.gz压缩
+    vitePlugins.push(ConfigCompressPlugin());
+    // 图片压缩
+    vitePlugins.push(ConfigImageminPlugin());
+  }
 
   return vitePlugins;
 }

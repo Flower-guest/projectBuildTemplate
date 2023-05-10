@@ -35,6 +35,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.24.0",
     "eslint-plugin-vue": "^9.5.1",
+    "rollup-plugin-visualizer": "^5.9.0",
     "typescript": "^4.6.4",
     "unocss": "^0.49.7",
     "unplugin-auto-import": "^0.11.2",
@@ -44,6 +45,8 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-pages": "^0.26.0",
+    "vite-plugin-progress": "^0.0.7",
+    "vite-plugin-restart": "^0.3.1",
     "vue-tsc": "^0.40.4"
   },
   "config": {
