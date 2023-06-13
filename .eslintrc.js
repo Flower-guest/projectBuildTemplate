@@ -4,16 +4,13 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  parser: "vue-eslint-parser",
+  parser: 'vue-eslint-parser',
   parserOptions: {
     ecmaVersion: 2020,
-    sourceType: "module",
-    parser: "@typescript-eslint/parser",
+    sourceType: 'module',
+    parser: '@typescript-eslint/parser',
   },
-  extends: [
-    'plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended'
-    // , 'plugin:prettier/recommended'
-  ],
+  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
   rules: {
     'vue/script-setup-uses-vars': 'error',
     '@typescript-eslint/ban-ts-ignore': 'off',
@@ -66,59 +63,66 @@ module.exports = {
       },
     ],
     'vue/multi-word-component-names': 'off',
-    "padding-line-between-statements": [
-      "error",
+    'padding-line-between-statements': [
+      'error',
       {
-        blankLine: "always",
-        prev: "",
-        next: "function",
+        blankLine: 'always',
+        prev: '*',
+        next: 'function',
       }, // 函数前填充空行
       {
-        blankLine: "always",
-        prev: "",
-        next: "export",
+        blankLine: 'always',
+        prev: '*',
+        next: 'export',
       }, // export前填充空行
       {
-        blankLine: "always",
-        prev: "",
-        next: "block",
+        blankLine: 'always',
+        prev: '*',
+        next: 'block',
       }, // {} 前换行
       {
-        blankLine: "always",
-        prev: "",
-        next: "block-like",
+        blankLine: 'always',
+        prev: '*',
+        next: 'block-like',
       }, // {} 前换行
       {
-        blankLine: "always",
-        prev: "",
-        next: "expression",
+        blankLine: 'always',
+        prev: '*',
+        next: 'expression',
       },
       {
-        blankLine: "always",
-        prev: "",
-        next: "multiline-block-like",
+        blankLine: 'always',
+        prev: '*',
+        next: 'multiline-block-like',
       }, // 多类{}前填充空行
       {
-        blankLine: "always",
-        prev: "multiline-let",
-        next: "",
+        blankLine: 'always',
+        prev: 'multiline-let',
+        next: '*',
       }, // 多个let后空行
       {
-        blankLine: "always",
-        prev: "multiline-const",
-        next: "",
+        blankLine: 'always',
+        prev: 'multiline-const',
+        next: '*',
       }, // 多个cont后空行
       {
-        blankLine: "always",
-        prev: "const",
-        next: "",
+        blankLine: 'always',
+        prev: 'const',
+        next: '*',
       }, // 多个cont后空行
       {
-        blankLine: "always",
-        prev: "import",
-        next: "",
+        blankLine: 'always',
+        prev: 'import',
+        next: '*',
       }, // 每个import后空行
     ],
-    "no-multiple-empty-lines": [1, { max: 1 }]
+    'prettier/prettier': [
+      'error',
+      {},
+      {
+        usePrettierrc: false,
+      },
+    ],
+    'no-multiple-empty-lines': [1, { max: 1 }],
   },
 };

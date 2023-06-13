@@ -1,4 +1,4 @@
-import { getCurrentInstance, ComponentInternalInstance } from "vue";
+import { getCurrentInstance, ComponentInternalInstance } from 'vue';
 
 //  挂载全局方法与变量调用
 export default function useGlobalProperties() {
@@ -10,5 +10,6 @@ export default function useGlobalProperties() {
       },
     },
   } = getCurrentInstance() as ComponentInternalInstance;
+
   return { ...globalProperties };
 }

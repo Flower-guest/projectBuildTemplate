@@ -1,7 +1,8 @@
-import { defineStore } from "pinia";
-import { AxiosSpinState } from "./types";
+import { defineStore } from 'pinia';
 
-export const useAxiosSpinStore = defineStore("axiosSpin", {
+import { AxiosSpinState } from './types';
+
+export const useAxiosSpinStore = defineStore('axiosSpin', {
   state: (): AxiosSpinState => ({
     showLoading: false,
   }),

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <a-button type="primary">Primary Button</a-button>
     <span class="btn">{{ user_name }} </span>
     <span>{{ email }} </span>
   </div>
