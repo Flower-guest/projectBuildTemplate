@@ -10,7 +10,7 @@ module.exports = {
     sourceType: 'module',
     parser: '@typescript-eslint/parser',
   },
-  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended'],
   rules: {
     'vue/script-setup-uses-vars': 'error',
     '@typescript-eslint/ban-ts-ignore': 'off',
@@ -115,13 +115,6 @@ module.exports = {
         prev: 'import',
         next: '*',
       }, // 每个import后空行
-    ],
-    'prettier/prettier': [
-      'error',
-      {},
-      {
-        usePrettierrc: false,
-      },
     ],
     'no-multiple-empty-lines': [1, { max: 1 }],
   },
