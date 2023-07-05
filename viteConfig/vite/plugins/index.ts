@@ -2,20 +2,21 @@
  * @name createVitePlugins
  * @description 封装plugins数组统一调用
  */
-import { PluginOption } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
-import vueSetupExtend from "vite-plugin-vue-setup-extend";
-import unocss from "unocss/vite";
-import defineConfig from "./unocss";
-import AutoRegistryComponents from "./components";
-import AutoImportDeps from "./autoImport";
-import ConfigEslintPlugin from "./eslintPlugin";
-import ConfigCompressPlugin from "./compression";
-import ConfigImageminPlugin from "./imagemin";
+import { PluginOption } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import vueSetupExtend from 'vite-plugin-vue-setup-extend';
+import unocss from 'unocss/vite';
+import defineConfig from './unocss';
+import AutoRegistryComponents from './components';
+import AutoImportDeps from './autoImport';
+import ConfigEslintPlugin from './eslintPlugin';
+import ConfigCompressPlugin from './compression';
+import ConfigImageminPlugin from './imagemin';
 import ConfigRestartPlugin from './restart';
 import ConfigProgressPlugin from './progress';
 import ConfigVisualizerConfig from './visualizer';
+import ConfigViteImages from './viteImages';
 
 export function createVitePlugins(isBuild: boolean) {
   const vitePlugins: PluginOption[] = [
@@ -23,10 +24,13 @@ export function createVitePlugins(isBuild: boolean) {
     vue({
       reactivityTransform: true,
     }),
+
     // JSX支持
     vueJsx(),
+
     // setup语法糖组件名支持
     vueSetupExtend(),
+
     // unocss配置
     unocss(defineConfig),
   ];
@@ -49,9 +53,13 @@ export function createVitePlugins(isBuild: boolean) {
   // rollup-plugin-visualizer
   vitePlugins.push(ConfigVisualizerConfig());
 
+  //快速插件视图图像
+  vitePlugins.push(ConfigViteImages());
+
   if (isBuild) {
     // 开启.gz压缩
     vitePlugins.push(ConfigCompressPlugin());
+
     // 图片压缩
     vitePlugins.push(ConfigImageminPlugin());
   }

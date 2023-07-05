@@ -110,11 +110,11 @@ module.exports = {
         prev: 'const',
         next: '*',
       }, // 多个cont后空行
-      {
-        blankLine: 'always',
-        prev: 'import',
-        next: '*',
-      }, // 每个import后空行
+      // {
+      //   blankLine: 'always',
+      //   prev: 'import',
+      //   next: '*',
+      // }, // 每个import后空行
     ],
     'no-multiple-empty-lines': [1, { max: 1 }],
   },

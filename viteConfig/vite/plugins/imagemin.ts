@@ -2,7 +2,7 @@
  * @name ConfigImageminPlugin
  * @description 开启图片压缩
  */
-import viteImagemin from "vite-plugin-imagemin";
+import viteImagemin from 'vite-plugin-imagemin';
 
 function ConfigImageminPlugin() {
   const plugin = viteImagemin({
@@ -23,15 +23,16 @@ function ConfigImageminPlugin() {
     svgo: {
       plugins: [
         {
-          name: "removeViewBox",
+          name: 'removeViewBox',
         },
         {
-          name: "removeEmptyAttrs",
+          name: 'removeEmptyAttrs',
           active: false,
         },
       ],
     },
   });
+
   return plugin;
 }
 
