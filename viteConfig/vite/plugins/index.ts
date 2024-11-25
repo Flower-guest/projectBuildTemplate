@@ -7,7 +7,6 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import unocss from 'unocss/vite';
-import defineConfig from './unocss';
 import AutoRegistryComponents from './components';
 import AutoImportDeps from './autoImport';
 import ConfigEslintPlugin from './eslintPlugin';
@@ -17,6 +16,7 @@ import ConfigRestartPlugin from './restart';
 import ConfigProgressPlugin from './progress';
 import ConfigVisualizerConfig from './visualizer';
 import ConfigViteImages from './viteImages';
+import { mars3dPlugin } from 'vite-plugin-mars3d';
 
 export function createVitePlugins(isBuild: boolean) {
   const vitePlugins: PluginOption[] = [
@@ -32,7 +32,9 @@ export function createVitePlugins(isBuild: boolean) {
     vueSetupExtend(),
 
     // unocss配置
-    unocss(defineConfig),
+    unocss(),
+
+    mars3dPlugin()
   ];
 
   // 自动按需引入组件

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import type { AxiosInstance } from 'axios';
 
-import { XJRequestInterceptors, RequestConfig } from './type';
+import { RequestConfig, XJRequestInterceptors } from './type';
 
 import { message } from 'ant-design-vue';
 

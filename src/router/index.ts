@@ -1,18 +1,31 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
-    redirect: "/index",
+    path: '/',
+    redirect: '/home',
   },
   {
-    path: "/index",
-    component: () => import("@/pages/index.vue"),
+    path: '/home',
+    component: () => import('@/pages/home/index.vue'),
     meta: {
-      title: "首页",
+      title: '首页',
     },
     children: [],
-  },
+  }, {
+    path: '/login',
+    component: () => import('@/pages/login/index.vue'),
+    meta: {
+      title: '登录',
+    },
+    children: [],
+  }, {
+    component: () => import('@/pages/fallback/not-found.vue'),
+    meta: {
+      title: '404',
+    },
+    path: '/:path(.*)*',
+  }
 ];
 
 const router = createRouter({

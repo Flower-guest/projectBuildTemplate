@@ -1,9 +1,18 @@
-/dist/*
-.local
-.output.js
-/node_modules/**
+node_modules
+dist
+build
+coverage
 
 **/*.svg
 **/*.sh
 
 /public/*
+
+.DS_Store
+.gitignore
+.prettierignore
+.eslintignore
+*.lock
+*.log
+*.ico
+.git

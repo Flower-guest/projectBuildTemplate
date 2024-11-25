@@ -85,11 +85,11 @@ module.exports = {
         prev: '*',
         next: 'block-like',
       }, // {} 前换行
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: 'expression',
-      },
+      // {
+      //   blankLine: 'always',
+      //   prev: '*',
+      //   next: 'expression',
+      // },
       {
         blankLine: 'always',
         prev: '*',
@@ -105,11 +105,11 @@ module.exports = {
         prev: 'multiline-const',
         next: '*',
       }, // 多个cont后空行
-      {
-        blankLine: 'always',
-        prev: 'const',
-        next: '*',
-      }, // 多个cont后空行
+      // {
+      //   blankLine: 'always',
+      //   prev: 'const',
+      //   next: '*',
+      // }, // 多个cont后空行
       // {
       //   blankLine: 'always',
       //   prev: 'import',

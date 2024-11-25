@@ -12,20 +12,41 @@ export default defineConfig(({ command, mode }) => {
   return {
     base: VITE_BASE_NAME == 'prod' ? './' : '/',
     resolve: {
-      // 配置别名
       alias: {
         '@': path.resolve(__dirname, 'src'),
       },
     },
     plugins: createVitePlugins(isBuild),
     server: {
-      hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
-      // 服务配置
-      port: 3000, // 类型： number 指定服务器端口;
-      open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
-      cors: false, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
-      host: '0.0.0.0', // IP配置，支持从IP启动
+      hmr: { overlay: false },
+      port: 3000,
+      open: false,
+      cors: false,
+      host: '0.0.0.0',
       proxy,
+    },
+    build: {
+      target: 'es2015',
+      cssTarget: 'chrome80',
+      outDir: 'dist',
+      chunkSizeWarningLimit: 2000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vue-vendor': ['vue', 'vue-router', 'pinia'],
+            'element-plus-vendor': ['element-plus'],
+            'icons-vendor': ['@element-plus/icons-vue'],
+          },
+        },
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+          additionalData: '@import "@/styles/variables.less";',
+        },
+      },
     },
   };
 });

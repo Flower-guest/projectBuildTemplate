@@ -4,7 +4,9 @@
  */
 
 import progress from 'vite-plugin-progress';
+
 const ConfigProgressPlugin = () => {
   return progress();
 };
+
 export default ConfigProgressPlugin;
